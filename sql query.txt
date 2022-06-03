@@ -1,0 +1,100 @@
+create database rest;
+go
+
+
+create table staff (
+id INT IDENTITY(1, 1) primary key,
+name varchar(25),
+job varchar(30),
+joint_date date ,
+gender varchar (20),
+salary money,
+phone varchar(15),
+manager_id int references staff(id),
+);
+
+
+create table registration
+(
+id_staff int references staff(id),
+username varchar(20) primary key ,
+Pass_word varchar(20),
+states varchar(20) not null,
+);
+
+
+create table suppliers 
+(
+sup_id int primary key,
+name varchar(20),
+phone varchar(20),
+manager_id int references staff (id),
+ingredients varchar(30),
+mny money ,
+);
+
+
+ create table items 
+(
+  Id INT IDENTITY(1, 1) primary key, 
+  name varchar(20) ,
+  Category varchar(20) null,
+  price money ,
+  );
+  
+ create table orders 
+  (
+  order_id INT IDENTITY(1, 1),
+  item_id int,
+  order_price money ,
+  order_data date ,
+  order_time  time , 
+  type_of_payment varchar(20) ,
+  );
+  
+
+  
+  
+  
+  
+insert into staff values ('Ahmed Mohamed Ali','Top_Manager','2004-5-22','male','10000', '01235489674' ,'1') 
+insert into staff values ('Yohana Adel Youssef','cashier','2010-6-5','male','3000', '01124789563', '1') 
+insert into staff values ('Mohamed Saeed Mohamed','cheif','2005-12-6','male','4000', '01024563789' ,'1') 
+insert into staff values ('Fahmey Youssef Adel','cheif','2011-3-7','male','3500', '01523478951' ,'1') 
+insert into staff values ('Omar Fathy Gmal','cashier','2008-6-17','male','2500', '01023512690' ,'1') 
+insert into staff values ('Samia Mahmoud Ahmed','cheif','2005-4-24','female','4500', '01124896573' ,'1') 
+insert into staff values ('Abdelrahman Nasr Mahmoude ','delivery','2007-3-25','male','2000','01245736895' ,'1') 
+insert into staff values ('Mostafa Amer Mohamed','delivery','2012-6-20','male','2100','01024896327' ,'1')
+
+
+insert into registration values ('1','ad','admain','0')
+insert into registration values ('2','Cash','cash','1')
+
+
+
+
+
+insert into suppliers values ('1','Mosaad Atef','01247856472','1','meet','20000' ) 
+insert into suppliers values ('2','Malek Mohamed','01521456378','1','chicken','40000')
+insert into suppliers values ('3','Mosaad Ali','01142045137','1','tomato','3500')
+insert into suppliers values ('4','Ali Ahmed','01252143284','1','vegetables','4500')
+
+
+ 
+ 
+  insert into items values ('Bacon burger' , '1', '50')
+  insert into items values ('mince burger' , '1', '57')
+  insert into items values ('smoked burger', '1', '69')
+  insert into items values ('cheese burger', '1', '80')
+  
+  insert into items values ('chicken lord', '2'  , '99')
+  insert into items values ('chicken grill', '2'  , '49')
+  insert into items values ('crusty burger', '2'  , '69')
+  insert into items values ('double fly chicken', '2' , '56')
+  insert into items values ('cheese burger', '2'  , '40') 
+  
+  insert into items values ('Mineral water' , '3', '10' )
+  insert into items values ('cola' , '3' , '20')
+  insert into items values ('Schweppes' , '3' , '25')
+  insert into items values ('sprite' , '3' , '20' )
+  insert into items values ('Fairoz' , '3' , '30' )
